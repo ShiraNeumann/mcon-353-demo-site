@@ -6,43 +6,19 @@ import sql from "../../images/sql.png";
 import python from "../../images/python.png";
 import csharp from "../../images/c#.png";
 import "../../App.css";
-import Box from "@mui/material/Box";
+
 import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
+
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import Accordion from "@mui/material/Accordion";
-import AccordionSummary from "@mui/material/AccordionSummary";
-import AccordionDetails from "@mui/material/AccordionDetails";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { Grid } from "@mui/material";
-import LinkedInIcon from "@mui/icons-material/LinkedIn";
-import { Avatar, Button } from "@mui/material";
-import { Link, Route, BrowserRouter as Router } from "react-router-dom";
-import "./home.css";
 
+import { Grid } from "@mui/material";
+import "./home.css";
 
 export const Home = () => {
   return (
     <div className="App">
-      <div className="nav">
-        <Avatar
-          sx={{
-            float: "right",
-            bgcolor: "black",
-            paddingTop: ".5em",
-          }}
-        >
-          <a
-            href="http://www.linkedin.com/in/shira-neumann-157aa5230/"
-            target={"_blank"}
-            rel="noopener"
-          >
-            <LinkedInIcon sx={{ color: "white", bgcolor: "black" }} />
-          </a>
-        </Avatar>
-      </div>
       <header className="App-header">
         <div class="container">
           <img src={computer} />
@@ -166,6 +142,4 @@ export const Home = () => {
       <br />
     </div>
   );
-}
-
-
+};
