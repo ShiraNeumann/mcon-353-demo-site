@@ -6,13 +6,10 @@ import sql from "../../images/sql.png";
 import python from "../../images/python.png";
 import csharp from "../../images/c#.png";
 import "../../App.css";
-
 import Card from "@mui/material/Card";
-
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-
 import { Grid } from "@mui/material";
 import "./home.css";
 

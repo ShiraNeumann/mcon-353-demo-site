@@ -1,11 +1,20 @@
 import React, { useState } from "react";
+import AddIcon from "@mui/icons-material/Add";
+import Typography from "@mui/material/Typography";
+import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
+import Box from "@mui/material/Box";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import { IconButton } from "@mui/material";
+import "./todo.css";
+import TextField from "@mui/material/TextField";
+import Checkbox from "@mui/material/Checkbox";
 
 export const Todo = () => {
   const [input, setInput] = useState(""); //use hook for keeping track of state
-  const [todos, setTodos] = useState([
-    { title: "first", isComplete: false },
-    { title: "second", isComplete: true },
-  ]);
+  const [todos, setTodos] = useState([]);
 
   const onInput = (event) => {
     console.log(event.target.value);
@@ -22,28 +31,82 @@ export const Todo = () => {
     const newTodos = [...todos];
     const updatedTodo = newTodos.find((x) => x.title === todo.title);
     updatedTodo.isComplete = !updatedTodo.isComplete;
+    if (updatedTodo.isComplete) {
+      newTodos.push(newTodos.splice(newTodos.indexOf(updatedTodo), 1)[0]); //move to the bottom of the list if it is complete
+    }
     setTodos(newTodos);
   };
 
-  const deleteTodo = () => {};
+  const deleteTodo = (index) => {
+    todos.splice(index, 1);
+    const newTodos = [...todos];
+    setTodos(newTodos);
+  };
+
   return (
     <>
-      <h1>To dos:</h1>
-      <input onInput={onInput} value={input} />
-      <button onClick={addToDo}>Add</button>
-      {
-        //injecting javaScript
-        todos.map((todo, index) => (
-          <p key={index}>
-            <input
-              type="checkbox"
-              checked={todo.isComplete}
-              onChange={() => toggleChecked(todo)}
-            />
-            {todo.title}
-          </p>
-        )) //transform the items with map
-      }
+      <Box sx={{ textAlign: "left", m: 10, maxWidth: "50%" }}>
+        <Typography variant="h2" gutterBottom display="inline">
+          To
+          <Typography variant="h2" display="inline" sx={{ color: "purple" }}>
+            Do
+          </Typography>
+        </Typography>
+        <br />
+        <TextField
+          id="standard-basic"
+          label="Enter task"
+          variant="standard"
+          color="secondary"
+          display="block"
+          onInput={onInput}
+          value={input}
+          sx={{ width: "75%" }}
+        />
+
+        <AddIcon onClick={addToDo} sx={{ verticalAlign: "bottom" }} />
+
+        <Box
+          sx={{
+            width: "75%",
+            bgcolor: "background.paper",
+            display: "flex",
+            justifyContent: "left",
+          }}
+        >
+          <List sx={{ width: "100%" }}>
+            {
+              //injecting javaScript
+              todos.map(
+                (
+                  todo,
+                  index //transform the items with map
+                ) => (
+                  <ListItem
+                    key={index}
+                    secondaryAction={
+                      <IconButton edge="end" aria-label="delete" disableRipple>
+                        <Checkbox
+                          size="small"
+                          color="secondary"
+                          checked={todo.isComplete}
+                          onChange={() => toggleChecked(todo)}
+                          inputProps={{ "aria-label": "controlled" }}
+                        />
+                        <DeleteOutlinedIcon onClick={() => deleteTodo(index)} />
+                      </IconButton>
+                    }
+                  >
+                    <ListItemButton onClick={() => toggleChecked(todo)}>
+                      <ListItemText primary={todo.title} />
+                    </ListItemButton>
+                  </ListItem>
+                )
+              )
+            }
+          </List>
+        </Box>
+      </Box>
     </>
   );
 };
