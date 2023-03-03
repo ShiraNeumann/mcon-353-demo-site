@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer, useContext } from "react";
 import AddIcon from "@mui/icons-material/Add";
 import Typography from "@mui/material/Typography";
 import DeleteOutlinedIcon from "@mui/icons-material/DeleteOutlined";
@@ -11,36 +11,44 @@ import { IconButton } from "@mui/material";
 import "./todo.css";
 import TextField from "@mui/material/TextField";
 import Checkbox from "@mui/material/Checkbox";
+import { TodoActions } from "../../state/todo/todo-reducer.jsx";
+import { todocontext } from "../../state/todo/todo-context";
 
 export const Todo = () => {
   const [input, setInput] = useState(""); //use hook for keeping track of state
-  const [todos, setTodos] = useState([]);
+  const { todoState, todoDispatch } = useContext(todocontext); //pulling the todos from the react element, so that it will remember what is there if you switch pages
 
   const onInput = (event) => {
-    console.log(event.target.value);
     setInput(event.target.value);
   };
 
   const addToDo = () => {
-    //use the setTodos method to create new array instead of mutating the data, so that the page knows to rerender
-    setTodos([...todos, { title: input, isComplete: false }]); //create a new array with everything in the old array with the new data
+    if (input === "") {
+      return;
+    }
+    todoDispatch({
+      type: TodoActions.ADD,
+      todo: {
+        title: input,
+        isComplete: false,
+        id: todoState.todos.length + 1,
+      },
+    });
     setInput("");
   };
 
   const toggleChecked = (todo) => {
-    const newTodos = [...todos];
-    const updatedTodo = newTodos.find((x) => x.title === todo.title);
-    updatedTodo.isComplete = !updatedTodo.isComplete;
-    if (updatedTodo.isComplete) {
-      newTodos.push(newTodos.splice(newTodos.indexOf(updatedTodo), 1)[0]); //move to the bottom of the list if it is complete
-    }
-    setTodos(newTodos);
+    todoDispatch({
+      type: TodoActions.TOGGLE_CHECKED,
+      todo,
+    });
   };
 
-  const deleteTodo = (index) => {
-    todos.splice(index, 1);
-    const newTodos = [...todos];
-    setTodos(newTodos);
+  const deleteTodo = (todo) => {
+    todoDispatch({
+      type: TodoActions.DELETE,
+      todo,
+    });
   };
 
   return (
@@ -77,7 +85,7 @@ export const Todo = () => {
           <List sx={{ width: "100%" }}>
             {
               //injecting javaScript
-              todos.map(
+              todoState.todos.map(
                 (
                   todo,
                   index //transform the items with map
@@ -93,7 +101,7 @@ export const Todo = () => {
                           onChange={() => toggleChecked(todo)}
                           inputProps={{ "aria-label": "controlled" }}
                         />
-                        <DeleteOutlinedIcon onClick={() => deleteTodo(index)} />
+                        <DeleteOutlinedIcon onClick={() => deleteTodo(todo)} />
                       </IconButton>
                     }
                   >
