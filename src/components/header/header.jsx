@@ -16,6 +16,7 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 const pages = [
   { name: "Home", path: "/" },
   { name: "Todo", path: "/todo" },
+  { name: "Chat", path: "/chat" },
 ];
 const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
