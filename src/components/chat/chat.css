@@ -1,0 +1,103 @@
+.channel{
+    width: 100%;
+    text-align: left;
+    padding: 20px;
+}
+
+.channel:hover{
+    background: lightgray;
+    border-radius: 5px;
+    
+}
+
+#sidebar{
+    height: 100%;
+    position: absolute;
+    top: 5;
+    left: 0;
+    max-height: max-content;
+    border-right: 1px solid lightgray;
+}
+
+#heading{
+    width: 100%;
+    text-align: left;
+    padding-left: 25px;
+}
+
+#newChat{
+    transform: scaleX(-1);
+}
+
+.message{
+    font-size: large;
+    background-color: lightgray;
+    border-radius: 5px;
+    width: fit-content;
+    max-width: 75%;
+    padding-bottom: 15%;
+    text-align: left;
+    padding: 2%;
+}
+
+.myusername{
+    margin-left: auto;
+    margin-right: 0;    
+    font-size: medium;
+    width: fit-content;
+    font-weight: bold ;
+    padding-bottom: 15%;
+    padding: 2%;
+}
+
+.username{
+    font-size:medium;
+   font-weight: bold ;
+   padding: 1.5%;
+}
+
+.mymessage{
+  margin-left: auto;
+  margin-right: 0;
+    color: white;
+    font-size: large;
+    background-color: purple;
+    border-radius: 5px;
+    width: fit-content;
+    max-width: 75%;
+    padding-bottom: 15%;
+    text-align: left;
+    padding: 1.5%;
+}
+
+#input{
+    margin-right: 0;
+    margin-left: auto;
+}
+
+.chatHeader{
+    border-bottom: 2px solid black;
+}
+body{
+    overflow: hidden;
+}
+
+#chat{
+    max-height: 500px;
+    overflow-y: scroll;
+}
+
+#typeMessage{
+    position: fixed;
+    bottom: 2%;
+    width: 50%;
+}
+
+.drawerHeader {
+    display: flex;
+    align-items: center;
+  }
+  
+  .drawerHeader > * {
+    margin-right: 8px;
+  }

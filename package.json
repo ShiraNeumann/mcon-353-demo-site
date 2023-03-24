@@ -6,6 +6,7 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@jon20111/drawer-inside-div": "^1.0.10",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.7",
     "@testing-library/jest-dom": "^5.16.5",
@@ -23,10 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "predeploy": "npm run build",
-   "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
-    
   },
   "eslintConfig": {
     "extends": [
@@ -46,5 +46,4 @@
       "last 1 safari version"
     ]
   }
-  
 }

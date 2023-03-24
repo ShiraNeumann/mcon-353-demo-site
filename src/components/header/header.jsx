@@ -44,7 +44,10 @@ export function Header() {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: "black" }}>
+    <AppBar
+      position="relative"
+      sx={{ backgroundColor: "black", zIndex: "1201" }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Typography
