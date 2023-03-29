@@ -52,13 +52,13 @@
 
 .username{
     font-size:medium;
-   font-weight: bold ;
-   padding: 1.5%;
+    font-weight: bold ;
+    padding: 1.5%;
 }
 
 .mymessage{
-  margin-left: auto;
-  margin-right: 0;
+    margin-left: auto;
+    margin-right: 0;
     color: white;
     font-size: large;
     background-color: purple;
