@@ -101,3 +101,6 @@ body{
   .drawerHeader > * {
     margin-right: 8px;
   }
+  body{
+    overflow: scroll;
+  }
