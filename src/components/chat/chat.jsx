@@ -1,5 +1,5 @@
 import { Box } from "@mui/system";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useInterval } from "../../hooks/use-interval";
 import {
   Drawer,
@@ -13,7 +13,6 @@ import {
 import "./chat.css";
 import SendIcon from "@mui/icons-material/Send";
 import MessageIcon from "@mui/icons-material/Message";
-import { styled } from "@mui/material/styles";
 import AddCommentIcon from "@mui/icons-material/AddComment";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import TextField from "@mui/material/TextField";
